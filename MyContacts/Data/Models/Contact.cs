@@ -1,34 +1,24 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
-namespace MyContacts.DTO;
+namespace MyContacts.Data.Models;
 
-public class Contact(string name, string phoneNumber, string description)
+public class Contact
 {
     [ScaffoldColumn(false)]
-    public int ID;
+    public int ID { get; set; }
     [Required, StringLength(40), Display(Name = "Name")]
-    private string name = name;
+    public string Name { get; set; }
     
     [Required, StringLength(15), DataType(DataType.PhoneNumber)]
-    private string phoneNumber = phoneNumber;
+    public string PhoneNumber { get; set; }
     
     [StringLength(1500), Display(Name = "Contact description"), DataType(DataType.MultilineText)]
-    private string description = description;
+    public string Description { get; set; }
 
     
-    private IEnumerable<Contact> contacts;
-
-    public string GetName() => name;
-    public void SetName(string value) => name = value;
+    public IEnumerable<Contact> Contacts;
     
-    public string GetPhoneNumber() => phoneNumber;
-    public void SetPhoneNumber(string value) => phoneNumber = value;
 
-    public string GetAdditionalDescription() => description;
-    public void SetAdditionalDescription(string value) => description = value;
-
-    public IEnumerable<Contact> GetContacts() => contacts;
-    public void SetContacts(IEnumerable<Contact> contacts) => this.contacts = contacts;
-
-    public int GetID() => ID;
+ 
 }

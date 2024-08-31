@@ -1,18 +1,24 @@
-﻿using MyContacts.DTO;
+﻿using System.Collections;
+using MyContacts.Data.Models;
 
 namespace MyContacts.Services;
 
 public interface IContactService : IDisposable
 {
-    // User section
-    Contact GetContacts();
-    void AddContact(Contact contact);
-    void RemoveContact(Contact contact);
-    void EditContactName(string name);
-    void EditContactDescription(string description);
-    IEnumerable<Contact> GetContactsWithSameContact();
+    IEnumerable<Contact> GetUserContacts(Contact user);
+    /**
+     * 
+     */
+    IEnumerable<Contact> GetFamiliarContacts((Contact, Contact) contacts);
     
-    // Admin section
-    void CreateContact(Contact contact);
-    void DeleteContact(Contact contact);
+    void ChangeUserContact(Contact user, int contactID);
+    void UpdateUserContact(Contact user, Contact contact);
+    void AddContactToUser(Contact user, Contact contact);
+    
+    
+    // CRUD operations
+    Contact GetUser(int ID);
+    void CreateUser(Contact user);
+    void DeleteUser(Contact user);
+    void UpdateUser(Contact user, ContactDTO info);
 }

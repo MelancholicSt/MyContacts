@@ -1,6 +1,6 @@
-﻿using MyContacts.DTO;
+﻿using MyContacts.Data.Models;
 
-namespace MyContacts.Repositories;
+namespace MyContacts.Data.DAL;
 
 public interface IContactRepository : IDisposable
 {

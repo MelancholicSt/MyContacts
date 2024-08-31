@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyContacts.DTO;
+using MyContacts.Data.Models;
 
-namespace MyContacts.Repositories;
+namespace MyContacts.Data.DAL;
 
 public class ContactRepository(ContactContext context) : IContactRepository
 {
@@ -18,12 +18,12 @@ public class ContactRepository(ContactContext context) : IContactRepository
 
     public Contact GetContactByName(string name)
     {
-        return context.Contacts.First(contact => contact.GetName() == name);
+        return context.Contacts.First(contact => contact.Name == name);
     }
 
     public Contact GetContactByPhoneNumber(string phoneNumber)
     {
-        return context.Contacts.First(contact => contact.GetPhoneNumber() == phoneNumber);
+        return context.Contacts.First(contact => contact.PhoneNumber == phoneNumber);
     }
 
     public void InsertContact(Contact contact)
@@ -48,7 +48,7 @@ public class ContactRepository(ContactContext context) : IContactRepository
     }
     public void Dispose()
     {
-        Dispose();
+        
         GC.SuppressFinalize(this);
     }
 

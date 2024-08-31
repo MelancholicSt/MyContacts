@@ -1,10 +1,11 @@
-﻿namespace MyContacts.DTO;
+﻿using System.Diagnostics.CodeAnalysis;
 
-public class ContactDTO
+namespace MyContacts.Data.Models;
+
+public class ContactDTO(string phoneNumber, string name, string description, IEnumerable<int> contactsIds)
 {
-    public int ID { get; set; }
-    public string PhoneNumber { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public IEnumerable<int> ContactsIds { get; set; }
+    public string PhoneNumber { get; } = phoneNumber;
+    public string Name { get; } = name;
+    public string Description { get; } = description;
+    public IEnumerable<int> ContactsIds { get; } = contactsIds;
 }

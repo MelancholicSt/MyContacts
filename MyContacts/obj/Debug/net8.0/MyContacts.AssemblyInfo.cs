@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("2756bf95-d537-4d9e-b24c-4637724d926a")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyContacts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+433500d28c786ed9ee12a227fb163ee634bec62e")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyContacts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyContacts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
