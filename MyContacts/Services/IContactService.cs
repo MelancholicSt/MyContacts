@@ -5,20 +5,17 @@ namespace MyContacts.Services;
 
 public interface IContactService : IDisposable
 {
-    IEnumerable<Contact> GetUserContacts(Contact user);
+    
     /**
      * 
      */
     IEnumerable<Contact> GetFamiliarContacts((Contact, Contact) contacts);
-    
-    void ChangeUserContact(Contact user, int contactID);
-    void UpdateUserContact(Contact user, Contact contact);
-    void AddContactToUser(Contact user, Contact contact);
-    
+    void AddContactToContactUser(Contact user, Contact contact);
+    void RemoveContactFromContactUser(Contact user, Contact contact);
     
     // CRUD operations
-    Contact GetUser(int ID);
-    void CreateUser(Contact user);
-    void DeleteUser(Contact user);
-    void UpdateUser(Contact user, ContactDTO info);
+    Contact GetContactUser(int id);
+    void CreateContactUser(Contact user);
+    void DeleteContactUser(Contact user);
+    void UpdateContactUser(Contact user, ContactDTO info);
 }

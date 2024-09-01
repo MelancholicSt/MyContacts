@@ -11,19 +11,19 @@ public class ContactRepository(ContactContext context) : IContactRepository
         return context.Contacts.ToList();
     }
 
-    public Contact GetContactByID(int id)
+    public Contact? GetContactByID(int id)
     {
         return context.Contacts.Find(id);
     }
 
-    public Contact GetContactByName(string name)
+    public Contact? GetContactByName(string name)
     {
-        return context.Contacts.First(contact => contact.Name == name);
+        return context.Contacts.FirstOrDefault(contact => contact.Name == name);
     }
 
-    public Contact GetContactByPhoneNumber(string phoneNumber)
+    public Contact? GetContactByPhoneNumber(string phoneNumber)
     {
-        return context.Contacts.First(contact => contact.PhoneNumber == phoneNumber);
+        return context.Contacts.FirstOrDefault(contact => contact.PhoneNumber == phoneNumber);
     }
 
     public void InsertContact(Contact contact)
