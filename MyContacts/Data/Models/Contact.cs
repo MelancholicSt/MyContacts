@@ -7,6 +7,7 @@ public class Contact
 {
     [ScaffoldColumn(false)]
     [Key]
+    [Required]
     public int Id { get; set; }
     [Required, StringLength(40), Display(Name = "Name")]
     public string Name { get; set; }
@@ -18,8 +19,7 @@ public class Contact
     public string Description { get; set; }
 
     
-    public IEnumerable<Contact> Contacts;
+    public IEnumerable<Contact> Contacts { get; set; } = new List<Contact>();
     
-
- 
+    
 }
