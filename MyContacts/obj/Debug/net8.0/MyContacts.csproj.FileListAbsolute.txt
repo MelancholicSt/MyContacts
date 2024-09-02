@@ -103,3 +103,5 @@ D:\Dev\Cpp\mygame\MyContacts\MyContacts\bin\Debug\net8.0\ru\Microsoft.CodeAnalys
 D:\Dev\Cpp\mygame\MyContacts\MyContacts\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Dev\Cpp\mygame\MyContacts\MyContacts\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Dev\Cpp\mygame\MyContacts\MyContacts\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Dev\Cpp\mygame\MyContacts\MyContacts\bin\Debug\net8.0\MyContacts.xml
+D:\Dev\Cpp\mygame\MyContacts\MyContacts\obj\Debug\net8.0\MyContacts.xml
