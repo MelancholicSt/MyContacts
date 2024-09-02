@@ -19,5 +19,5 @@ public interface IContactService : IDisposable
     Contact GetContactUser(int id);
     void CreateContactUser(Contact user);
     void DeleteContactUser(Contact user);
-    void UpdateContactUser(Contact user, ContactDTO info);
+    void UpdateContactUser(Contact user);
 }
