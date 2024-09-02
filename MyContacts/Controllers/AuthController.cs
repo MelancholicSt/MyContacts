@@ -52,6 +52,7 @@ public class AuthController(IContactService contactService) : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login(ContactDTO contactDto)
     {
+        
         List<Claim> claims = new List<Claim>
         {
             new("phone", contactDto.PhoneNumber),
@@ -72,9 +73,9 @@ public class AuthController(IContactService contactService) : ControllerBase
     }
 
     [HttpPost("logout")]
-    public async Task<IActionResult> Logout(bool redirectToLogin = false)
+    public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync();
-        return redirectToLogin ? RedirectToAction("Login") : Ok();
+        return Ok();
     }
 }

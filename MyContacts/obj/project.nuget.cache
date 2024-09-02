@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4gdOLduWM46p2JVoaOx1BKF9VihP1awhRwpVVSPqRYK7CBcBgTBteJpFESJWiJFF3c3KUtzAnbAlcc8no75Rfg==",
+  "dgSpecHash": "aA9SJnwyoLx0R/K9umTqHl+WyCnfpLzgMHw6PoPJOy6H68Sncfp5cS5rw7/Rq4V4BHijVMBBqiJeurf6ofWuKA==",
   "success": true,
-  "projectFilePath": "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts\\MyContacts.csproj",
+  "projectFilePath": "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts\\MyContacts.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\YourGirlForever\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\YourGirlForever\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

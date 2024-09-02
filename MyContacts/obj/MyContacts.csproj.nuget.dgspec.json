@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts\\MyContacts.csproj": {}
+    "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts\\MyContacts.csproj": {}
   },
   "projects": {
-    "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts\\MyContacts.csproj": {
+    "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts\\MyContacts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts\\MyContacts.csproj",
+        "projectUniqueName": "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts\\MyContacts.csproj",
         "projectName": "MyContacts",
-        "projectPath": "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts\\MyContacts.csproj",
+        "projectPath": "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts\\MyContacts.csproj",
         "packagesPath": "C:\\Users\\YourGirlForever\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts\\obj\\",
+        "outputPath": "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\YourGirlForever\\AppData\\Roaming\\NuGet\\NuGet.Config"

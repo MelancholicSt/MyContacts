@@ -12,7 +12,8 @@ public interface IContactService : IDisposable
     IEnumerable<Contact> GetFamiliarContacts((Contact, Contact) contacts);
     void AddContactToContactUser(Contact user, Contact contact);
     void RemoveContactFromContactUser(Contact user, Contact contact);
-    
+
+    bool IsPhoneNumberFormatValid(string number);
     // CRUD operations
     Contact GetContactUser(int id);
     void CreateContactUser(Contact user);

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyContacts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93a7fb85cf45644b4c4f0001a4977ade23fbed6b")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyContacts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyContacts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

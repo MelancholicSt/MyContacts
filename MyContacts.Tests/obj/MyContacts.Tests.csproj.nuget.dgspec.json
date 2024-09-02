@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts.Tests\\MyContacts.Tests.csproj": {}
+    "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts.Tests\\MyContacts.Tests.csproj": {}
   },
   "projects": {
-    "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts.Tests\\MyContacts.Tests.csproj": {
+    "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts.Tests\\MyContacts.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts.Tests\\MyContacts.Tests.csproj",
+        "projectUniqueName": "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts.Tests\\MyContacts.Tests.csproj",
         "projectName": "MyContacts.Tests",
-        "projectPath": "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts.Tests\\MyContacts.Tests.csproj",
+        "projectPath": "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts.Tests\\MyContacts.Tests.csproj",
         "packagesPath": "C:\\Users\\YourGirlForever\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts.Tests\\obj\\",
+        "outputPath": "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "configFilePaths": [
@@ -27,8 +27,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts\\MyContacts.csproj": {
-                "projectPath": "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts\\MyContacts.csproj"
+              "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts\\MyContacts.csproj": {
+                "projectPath": "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts\\MyContacts.csproj"
               }
             }
           }
@@ -84,14 +84,14 @@
         }
       }
     },
-    "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts\\MyContacts.csproj": {
+    "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts\\MyContacts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts\\MyContacts.csproj",
+        "projectUniqueName": "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts\\MyContacts.csproj",
         "projectName": "MyContacts",
-        "projectPath": "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts\\MyContacts.csproj",
+        "projectPath": "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts\\MyContacts.csproj",
         "packagesPath": "C:\\Users\\YourGirlForever\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts\\obj\\",
+        "outputPath": "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\YourGirlForever\\AppData\\Roaming\\NuGet\\NuGet.Config"

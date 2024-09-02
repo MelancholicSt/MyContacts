@@ -39,8 +39,8 @@ public class ContactService(IContactRepository contactRepository) : IContactServ
 
     public Contact GetContactUser(int id)
     {
-        Contact contact = contactRepository.GetContactByID(id);
-          
+        Contact? contact = contactRepository.GetContactByID(id);
+        
         return contact;
     }
 
