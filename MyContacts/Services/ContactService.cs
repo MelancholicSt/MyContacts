@@ -72,6 +72,7 @@ public class ContactService(IContactRepository contactRepository) : IContactServ
         if(!IsPhoneNumberFormatValid(contact.PhoneNumber))
             throw new ApplicationException("The phone number is incorrect");
         contactRepository.UpdateContact(user);
+        contactRepository.Save();
     }
 
     public bool IsPhoneNumberFormatValid(string number)
