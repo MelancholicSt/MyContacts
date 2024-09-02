@@ -6,7 +6,8 @@ namespace MyContacts.Data.Models;
 public class Contact
 {
     [ScaffoldColumn(false)]
-    public int ID { get; set; }
+    [Key]
+    public int Id { get; set; }
     [Required, StringLength(40), Display(Name = "Name")]
     public string Name { get; set; }
     

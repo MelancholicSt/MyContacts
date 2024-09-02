@@ -31,9 +31,43 @@ public class AuthController(IContactService contactService) : ControllerBase
             new ClaimsPrincipal(claimsIdentity),
             authenticationProperties
         );
-        
+        Contact contact = new Contact
+        {
+            PhoneNumber = contactDto.PhoneNumber,
+            Name = contactDto.Name,
+            Description = contactDto.Description,
+            Contacts = new List<Contact>()
+        };
+        try
+        {
+            contactService.CreateContactUser(contact);
+        }
+        catch (ApplicationException e)
+        {
+            return BadRequest(e.Message);
+        }
         return Ok();
     }
-    
-    
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(ContactDTO contactDto)
+    {
+        List<Claim> claims = new List<Claim>
+        {
+            new("phone", contactDto.PhoneNumber),
+            new("name", contactDto.Name),
+        };
+        ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        AuthenticationProperties authenticationProperties = new AuthenticationProperties
+        {
+            AllowRefresh = true,
+            RedirectUri = new PathString("/contact/me"),
+        };
+        await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity),
+            authenticationProperties
+        );
+        return Ok();
+    }
 }

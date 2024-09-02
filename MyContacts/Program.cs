@@ -25,7 +25,7 @@ public class Program
             .AddCookie(o =>
             {
                 o.LoginPath = new PathString("/auth/login");
-                
+                o.ExpireTimeSpan = TimeSpan.FromDays(30);
             });
         
         builder.Services.AddHttpContextAccessor();

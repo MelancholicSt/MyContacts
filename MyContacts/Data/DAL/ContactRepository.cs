@@ -29,6 +29,7 @@ public class ContactRepository(ContactContext context) : IContactRepository
     public void InsertContact(Contact contact)
     {
         context.Contacts.Add(contact);
+        Save();
     }
 
     public void UpdateContact(Contact contact)
