@@ -1,2 +1,5 @@
-bin/
+.idea
 MyContacts.csproj
+appsettings.Development.json
+appsettings.json
+../MyContacts.sln
