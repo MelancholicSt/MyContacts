@@ -62,6 +62,7 @@ public class ContactService(IContactRepository contactRepository) : IContactServ
         contactRepository.DeleteContact(contact.Id);
     }
 
+    
     public void UpdateContactUser(Contact user, ContactDTO info)
     {
         Contact contact = contactRepository.GetContactByID(user.Id);

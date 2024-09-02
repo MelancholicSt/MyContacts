@@ -13,6 +13,7 @@ public interface IContactService : IDisposable
     void AddContactToContactUser(Contact user, Contact contact);
     void RemoveContactFromContactUser(Contact user, Contact contact);
 
+    
     bool IsPhoneNumberFormatValid(string number);
     // CRUD operations
     Contact GetContactUser(int id);
