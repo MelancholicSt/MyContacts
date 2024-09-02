@@ -40,14 +40,15 @@ public class ContactService(IContactRepository contactRepository) : IContactServ
     public Contact GetContactUser(int id)
     {
         Contact? contact = contactRepository.GetContactByID(id);
-        
+        if (contact == null)
+            throw new ApplicationException("The contact user doen't exists");
         return contact;
     }
 
     public void CreateContactUser(Contact user)
     {
         Contact? contact = contactRepository.GetContactByPhoneNumber(user.PhoneNumber);
-        if (!IsPhoneNumberFormatValid(contact.PhoneNumber))
+        if (!IsPhoneNumberFormatValid(user.PhoneNumber))
             throw new ApplicationException("The phone number is incorrect");
         if (contact != null)
             throw new ApplicationException("The contact user already exists");
@@ -63,16 +64,18 @@ public class ContactService(IContactRepository contactRepository) : IContactServ
     }
 
     
-    public void UpdateContactUser(Contact user, ContactDTO info)
+    public void UpdateContactUser(Contact user)
     {
         Contact contact = contactRepository.GetContactByID(user.Id);
         if (contact == null)
             throw new ApplicationException("The contact user doesn't exist");
+        if(!IsPhoneNumberFormatValid(contact.PhoneNumber))
+            throw new ApplicationException("The phone number is incorrect");
         contactRepository.UpdateContact(user);
     }
 
     public bool IsPhoneNumberFormatValid(string number)
     {
-        return Regex.Match(number, @"^(\+[0-9]{9})$").Success;
+        return Regex.Match(number, @"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$").Success;
     }
 }
