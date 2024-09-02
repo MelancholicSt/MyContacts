@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Internal;
 using MyContacts.Data.Models;
 
 namespace MyContacts.Data.DAL;
-
+#pragma warning disable CS1591
 public class ContactContext(DbContextOptions<ContactContext> options) : DbContext(options)
 {
     public DbSet<Contact> Contacts { get; set; } 
@@ -17,3 +17,4 @@ public class ContactContext(DbContextOptions<ContactContext> options) : DbContex
         });
     }
 }
+#pragma warning restore CS1591
