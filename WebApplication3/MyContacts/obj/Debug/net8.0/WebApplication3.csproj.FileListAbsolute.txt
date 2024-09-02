@@ -1,0 +1,7 @@
+D:\Dev\Cpp\mygame\WebApplication3\WebApplication3\obj\Debug\net8.0\WebApplication3.csproj.AssemblyReference.cache
+D:\Dev\Cpp\mygame\WebApplication3\WebApplication3\obj\Debug\net8.0\WebApplication3.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\Cpp\mygame\WebApplication3\WebApplication3\obj\Debug\net8.0\WebApplication3.AssemblyInfoInputs.cache
+D:\Dev\Cpp\mygame\WebApplication3\WebApplication3\obj\Debug\net8.0\WebApplication3.AssemblyInfo.cs
+D:\Dev\Cpp\mygame\WebApplication3\WebApplication3\obj\Debug\net8.0\WebApplication3.csproj.CoreCompileInputs.cache
+D:\Dev\Cpp\mygame\WebApplication3\WebApplication3\obj\Debug\net8.0\WebApplication3.MvcApplicationPartsAssemblyInfo.cs
+D:\Dev\Cpp\mygame\WebApplication3\WebApplication3\obj\Debug\net8.0\WebApplication3.MvcApplicationPartsAssemblyInfo.cache
