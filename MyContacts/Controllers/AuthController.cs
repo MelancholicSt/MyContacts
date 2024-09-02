@@ -70,4 +70,11 @@ public class AuthController(IContactService contactService) : ControllerBase
         );
         return Ok();
     }
+
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout(bool redirectToLogin = false)
+    {
+        await HttpContext.SignOutAsync();
+        return redirectToLogin ? RedirectToAction("Login") : Ok();
+    }
 }
