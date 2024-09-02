@@ -13,27 +13,39 @@ public class ContactService(IContactRepository contactRepository) : IContactServ
     
     public IEnumerable<Contact> GetFamiliarContacts((Contact, Contact) contacts)
     {
-        return contacts.Item1.Contacts.Intersect(contacts.Item2.Contacts);
+        return contacts.Item1.SubContacts.Intersect(contacts.Item2.SubContacts);
     }
     
 
-    public void AddContactToContactUser(Contact user, Contact contact)
+    public void AddSubContact(Contact user, Contact subContact)
     {
-        user.Contacts.ToList().Add(contact);
-        contactRepository.UpdateContact(user);
+        if (user.Id == subContact.Id)
+            throw new ApplicationException("The user cannot add itself to contact list");
+        
+        contactRepository.InsertSubContact(user, subContact);
         contactRepository.Save();
     }
 
-    public void RemoveContactFromContactUser(Contact user, Contact contact)
+    public void RemoveSubContact(Contact user, Contact subContact)
     {
         
-        if (contactRepository.GetContactByID(contact.Id) == null)
+        if (contactRepository.GetContactByID(subContact.Id) == null)
             throw new ApplicationException("The contact doesn't exist");
         if (contactRepository.GetContactByID(user.Id) == null)
             throw new ApplicationException("The contact user doesn't exists");
         
-        user.Contacts.ToList().Remove(contact);
-        contactRepository.UpdateContact(user);
+        contactRepository.RemoveSubContact(user, subContact);
+        contactRepository.Save();
+    }
+
+    public void EditSubContact(Contact user, Contact subContact)
+    {
+        if (contactRepository.GetContactByID(subContact.Id) == null)
+            throw new ApplicationException($"Contact \"{subContact.PhoneNumber}\" doesn't exist");
+        if (contactRepository.GetContactByID(user.Id) == null)
+            throw new ApplicationException($"Contact \"{subContact.PhoneNumber}\" user doesn't exists");
+        
+        contactRepository.UpdateSubContact(user, subContact);
         contactRepository.Save();
     }
 
@@ -41,7 +53,16 @@ public class ContactService(IContactRepository contactRepository) : IContactServ
     {
         Contact? contact = contactRepository.GetContactByID(id);
         if (contact == null)
-            throw new ApplicationException("The contact user doen't exists");
+            throw new ApplicationException("The contact user doesn't exists");
+        return contact;
+    }
+
+    public Contact GetContactUser(string phoneNumber)
+    {
+        Contact? contact = contactRepository.GetContactByPhoneNumber(phoneNumber);
+        if (contact == null)
+            throw new ApplicationException("The contact user doesn't exists");
+        
         return contact;
     }
 
@@ -53,6 +74,7 @@ public class ContactService(IContactRepository contactRepository) : IContactServ
         if (contact != null)
             throw new ApplicationException("The contact user already exists");
         contactRepository.InsertContact(user);
+        contactRepository.Save();
     }
 
     public void DeleteContactUser(Contact user)
@@ -61,6 +83,7 @@ public class ContactService(IContactRepository contactRepository) : IContactServ
         if (contact == null)
             throw new ApplicationException("The contact user doesn't exist");
         contactRepository.DeleteContact(contact.Id);
+        contactRepository.Save();
     }
 
     
