@@ -1,8 +1,9 @@
 .idea
 MyContacts.csproj
-appsettings.Development.json
-appsettings.json
+
 bin
 obj
+*.http
+*.json
 
 ../MyContacts.sln
