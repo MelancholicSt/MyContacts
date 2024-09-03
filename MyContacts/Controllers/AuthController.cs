@@ -36,7 +36,6 @@ public class AuthController(IContactService contactService) : ControllerBase
             PhoneNumber = contactDto.PhoneNumber,
             Name = contactDto.Name,
             Description = contactDto.Description,
-            Contacts = new List<Contact>()
         };
         try
         {

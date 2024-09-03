@@ -41,7 +41,7 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
             contact.PhoneNumber, 
             contact.Name, 
             contact.Description,
-            contact.Contacts.Select(c => c.Id)
+            contact.SubContacts.Select(c => c.Id)
         );
         return Ok(result);
     }
@@ -100,6 +100,31 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
             return BadRequest(e);
         }
 
+        return Ok();
+    }
+    
+    /// <summary>
+    /// Request should be from frontend client
+    /// </summary>
+    /// <param name="contactId">Contact which will be added to user</param>
+    /// <returns></returns>
+    [HttpPost("contacts/add")]
+    public IActionResult AddContact(int contactId)
+    {
+        string userPhoneNumber = HttpContext.User.Claims.First(claim => claim.Type == "phone").Value;
+        Contact user = contactService.GetContactUser(userPhoneNumber);
+        Contact contact;
+        try
+        {
+            contact = contactService.GetContactUser(contactId);
+        }
+        catch (ApplicationException e)
+        {
+            logger.LogWarning(e.Message);
+            return BadRequest(e.Message);
+        }
+        
+        contactService.AddSubContact(user, contact);
         return Ok();
     }
 }
