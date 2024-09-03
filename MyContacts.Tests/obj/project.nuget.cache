@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "n4bPAdh39cXsiLLJoQ1sUprPoQZczwfXay3sofQWzwXw+s+oLdEQKrj/WmflwMQuupkIpmjpW4NwFT+eovDGpQ==",
+  "dgSpecHash": "T8Xf4zEpKEmRJcN2pH3t0z8EL7BnHVO0YuvGJ/VBcF8MDvTCimobaOU/o/+eUAMh7ZCd5fP1khQOSlK39OE93A==",
   "success": true,
-  "projectFilePath": "D:\\Dev\\Cpp\\mygame\\WebApplication3\\MyContacts.Tests\\MyContacts.Tests.csproj",
+  "projectFilePath": "D:\\Dev\\Cpp\\mygame\\MyContacts\\MyContacts.Tests\\MyContacts.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\YourGirlForever\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\YourGirlForever\\.nuget\\packages\\jetbrains.annotations\\2024.2.0\\jetbrains.annotations.2024.2.0.nupkg.sha512",

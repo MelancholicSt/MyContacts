@@ -9,6 +9,9 @@ public interface IContactRepository : IDisposable
     Contact? GetContactByName(string name);
     Contact? GetContactByPhoneNumber(string phoneNumber);
     void InsertContact(Contact contact);
+    void InsertSubContact(Contact contact, Contact subContact);
+    void RemoveSubContact(Contact contact, Contact subContact);
+    void UpdateSubContact(Contact contact, Contact subContact);
     void UpdateContact(Contact contact);
     void DeleteContact(int contactID);
     void Save();

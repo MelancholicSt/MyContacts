@@ -36,7 +36,6 @@ public class AuthController(IContactService contactService) : ControllerBase
             PhoneNumber = contactDto.PhoneNumber,
             Name = contactDto.Name,
             Description = contactDto.Description,
-            Contacts = new List<Contact>()
         };
         try
         {
@@ -52,6 +51,7 @@ public class AuthController(IContactService contactService) : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login(ContactDTO contactDto)
     {
+        
         List<Claim> claims = new List<Claim>
         {
             new("phone", contactDto.PhoneNumber),
@@ -68,6 +68,13 @@ public class AuthController(IContactService contactService) : ControllerBase
             new ClaimsPrincipal(claimsIdentity),
             authenticationProperties
         );
+        return Ok();
+    }
+
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync();
         return Ok();
     }
 }
