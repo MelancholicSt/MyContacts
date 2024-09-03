@@ -2,4 +2,7 @@
 MyContacts.csproj
 appsettings.Development.json
 appsettings.json
+bin
+obj
+
 ../MyContacts.sln
