@@ -31,6 +31,7 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
             .Select(c => 
                 new ContactDto
                     (
+                        c.Id,
                         c.PhoneNumber, 
                         c.Name, 
                         c.Description, 
@@ -58,6 +59,7 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
             .GetFamiliarContacts(contactPair)
             .Select(c => new ContactDto
                 (
+                    c.Id,
                     c.PhoneNumber,
                     c.Name,
                     c.Description,
@@ -81,6 +83,7 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
 
         ContactDto result = new ContactDto
         (
+            contact.Id,
             contact.PhoneNumber, 
             contact.Name, 
             contact.Description,
