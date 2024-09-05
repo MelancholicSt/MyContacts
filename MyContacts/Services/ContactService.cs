@@ -18,7 +18,10 @@ public class ContactService(IContactRepository contactRepository) : IContactServ
 
     public IEnumerable<Contact> GetFamiliarContacts((Contact, Contact) contacts)
     {
-        return contacts.Item1.Friends.Intersect(contacts.Item2.Friends).Select(c => c.Friend);
+        IEnumerable<int> friendsIds1 = contacts.Item1.Friends.Select(fc => fc.FriendId);
+        IEnumerable<int> friendsIds2 = contacts.Item2.Friends.Select(fc => fc.FriendId);
+        IEnumerable<int> familiarFriendsIds = friendsIds1.Intersect(friendsIds2);
+        return familiarFriendsIds.Select(contactRepository.GetContactByID);
     }
     
 
