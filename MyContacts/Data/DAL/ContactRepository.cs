@@ -8,7 +8,7 @@ public class ContactRepository(ContactContext context) : IContactRepository
     private ContactContext context = context;
     public IEnumerable<Contact> GetContacts()
     {
-        return context.Contacts.ToList();
+        return context.Contacts.Include(c => c.Friends).ToList();
     }
 
     public Contact? GetContactByID(int id)
