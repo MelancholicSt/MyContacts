@@ -13,12 +13,12 @@ public class ContactRepository(ContactContext context) : IContactRepository
 
     public Contact? GetContactByID(int id)
     {
-        return context.Contacts.Include(c => c.SubContacts).FirstOrDefault(x => x.Id == id);
+        return context.Contacts.Include(c => c.Friends).FirstOrDefault(x => x.Id == id);
     }
 
     public Contact? GetContactByName(string name)
     {
-        return context.Contacts.Include(c => c.SubContacts).FirstOrDefault(contact => contact.Name == name);
+        return context.Contacts.Include(x => x.Friends).FirstOrDefault(contact => contact.Name == name);
     }
 
     public Contact? GetContactByPhoneNumber(string phoneNumber)
@@ -34,31 +34,36 @@ public class ContactRepository(ContactContext context) : IContactRepository
 
     public void InsertSubContact(Contact contact, Contact subContact)
     {
-        Contact dbContact = context.Contacts
-            .Include(c => c.SubContacts)
-            .FirstOrDefault(c => c == contact);
-        dbContact.SubContacts.Add(subContact);
+        ContactFriend contactFriend = new ContactFriend()
+        {
+            ContactId = contact.Id,
+            FriendId = subContact.Id
+        };
+        context.Add(contactFriend);
         context.SaveChanges();
     }
 
     public void RemoveSubContact(Contact contact, Contact subContact)
     {
-        Contact dbContact = context.Contacts
-            .Include(c => c.SubContacts)
-            .FirstOrDefault(c => c == contact);
-        dbContact.SubContacts.Remove(subContact);
+        ContactFriend contactFriend = new ContactFriend()
+        {
+            ContactId = contact.Id,
+            FriendId = subContact.Id
+        };
+        context.ChangeTracker.Clear();
+        context.Remove(contactFriend);
         context.SaveChanges();
     }
 
     public void UpdateSubContact(Contact contact, Contact subContact)
     {
-        Contact existingContact = context.Contacts
-            .Include(c => c.SubContacts)
-            .FirstOrDefault(c => c == contact);
-
-        Contact editingContact = existingContact.SubContacts.First(c => c.Id == subContact.Id);
-        
-        context.Entry(editingContact).CurrentValues.SetValues(subContact);
+        ContactFriend contactFriend = context.ContactFriends.Find(contact.Id, subContact.Id);
+        ContactFriend newValueContactFriend = new ContactFriend()
+        {
+            Contact = contact,
+            Friend = subContact
+        };
+        context.Entry(contactFriend).CurrentValues.SetValues(newValueContactFriend);
         context.SaveChanges();
     }
     
