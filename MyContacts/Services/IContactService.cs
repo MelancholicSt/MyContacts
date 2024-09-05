@@ -5,10 +5,11 @@ namespace MyContacts.Services;
 
 public interface IContactService : IDisposable
 {
-    
+
     /**
-     * 
+     *
      */
+    IEnumerable<Contact> GetAllContacts();
     IEnumerable<Contact> GetFamiliarContacts((Contact, Contact) contacts);
     void AddSubContact(Contact user, Contact subContact);
     void RemoveSubContact(Contact user, Contact subContact);

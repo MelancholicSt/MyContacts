@@ -10,17 +10,26 @@ public class ContactService(IContactRepository contactRepository) : IContactServ
     {
         GC.SuppressFinalize(this);
     }
-    
+
+    public IEnumerable<Contact> GetAllContacts()
+    {
+        return contactRepository.GetContacts();
+    }
+
     public IEnumerable<Contact> GetFamiliarContacts((Contact, Contact) contacts)
     {
-        return contacts.Item1.SubContacts.Intersect(contacts.Item2.SubContacts);
+        return contacts.Item1.Friends.Intersect(contacts.Item2.Friends).Select(c => c.Friend);
     }
     
 
     public void AddSubContact(Contact user, Contact subContact)
     {
+        
+        
         if (user.Id == subContact.Id)
             throw new ApplicationException("The user cannot add itself to contact list");
+        if (user.Friends.Select(c => ( c.Contact,c.Friend)).Contains((user, subContact)))
+            throw new ApplicationException("The contact already exists in user's list");
         
         contactRepository.InsertSubContact(user, subContact);
         contactRepository.Save();
