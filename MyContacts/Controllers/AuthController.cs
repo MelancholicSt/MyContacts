@@ -32,20 +32,11 @@ public class AuthController(IContactService contactService, ILogger<AuthControll
         try
         {
             contactService.CreateContactUser(contact);
-        }
-        catch (ApplicationException e)
-        {
-            return BadRequest(e.Message);
-        }
-
-        try
-        {
             contact = contactService.GetContactUser(contact.PhoneNumber);
         }
         catch (ApplicationException e)
         {
-            Console.WriteLine(e);
-            throw;
+            return BadRequest(e.Message);
         }
         List<Claim> claims = new List<Claim>
         {
