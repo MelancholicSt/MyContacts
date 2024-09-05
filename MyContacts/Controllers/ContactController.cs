@@ -34,11 +34,37 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
                         c.PhoneNumber, 
                         c.Name, 
                         c.Description, 
-                        c.Friends.Select(c => c.Contact.Id)
+                        c.Friends.Select(c => c.FriendId)
                     )
             );
     }
-    
+
+    [HttpGet("get/match")]
+    public IEnumerable<ContactDto> GetFamiliarContacts(int contactId1, int contactId2)
+    {
+        (Contact, Contact) contactPair;
+        try
+        {
+            contactPair.Item1 = contactService.GetContactUser(contactId1);
+            contactPair.Item2 = contactService.GetContactUser(contactId2);
+        }
+        catch (ApplicationException e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
+        return contactService
+            .GetFamiliarContacts(contactPair)
+            .Select(c => new ContactDto
+                (
+                    c.PhoneNumber,
+                    c.Name,
+                    c.Description,
+                    c.Friends.Select(fc => fc.FriendId)
+                )
+            );
+    }
     [HttpGet("get/{id}")]
     public IActionResult GetContact(int id)
     {
