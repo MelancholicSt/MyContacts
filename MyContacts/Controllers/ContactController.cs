@@ -96,16 +96,7 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
         try
         {
             contact = contactService.GetContactUser(id);
-        }
-        catch (ApplicationException e)
-        {
-            logger.LogWarning(e.Message);
-            return BadRequest(e);
-        }
-
-        contact.Name = name;
-        try
-        {
+            contact.Name = name;
             contactService.UpdateContactUser(contact);
         }
         catch (ApplicationException e)
@@ -124,6 +115,7 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
         try
         {
             contact = contactService.GetContactUser(id);
+            contactService.UpdateContactUser(contact);
         }
         catch (ApplicationException e)
         {
@@ -132,17 +124,6 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
         }
 
         contact.Description = description;
-        
-        try
-        {
-            contactService.UpdateContactUser(contact);
-        }
-        catch (ApplicationException e)
-        {
-            Console.WriteLine(e);
-            return BadRequest(e);
-        }
-
         return Ok();
     }
     
@@ -160,14 +141,13 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
         try
         {
             contact = contactService.GetContactUser(subContactId);
+            contactService.AddSubContact(user, contact);
         }
         catch (ApplicationException e)
         {
             logger.LogWarning(e.Message);
             return BadRequest(e.Message);
         }
-        
-        contactService.AddSubContact(user, contact);
         return Ok();
     }
     [HttpGet("self/contacts/remove")]
@@ -180,13 +160,13 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
         try
         {
             contact = contactService.GetContactUser(subContactId);
+            contactService.RemoveSubContact(user, contact);
         }
         catch (ApplicationException e)
         {
             logger.LogWarning(e.Message);
             return BadRequest(e.Message);
         }
-        contactService.RemoveSubContact(user, contact);
         return Ok();
     }
     
