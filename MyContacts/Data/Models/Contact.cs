@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 
 namespace MyContacts.Data.Models;
@@ -16,9 +17,7 @@ public class Contact
     public string PhoneNumber { get; set; } = null!;
     
     [StringLength(1500), Display(Name = "Contact description"), DataType(DataType.MultilineText)]
-    public string Description { get; set;}
-    
-    public int? ParentContactId { get; set; }
-    public Contact? ParentContact { get; set; }
-    public ICollection<Contact> SubContacts { get; set; } = new HashSet<Contact>();
+    public string? Description { get; set;}
+
+    public virtual ICollection<ContactFriend> Friends { get; } = new List<ContactFriend>();
 }
