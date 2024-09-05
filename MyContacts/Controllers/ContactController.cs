@@ -13,7 +13,7 @@ namespace MyContacts.Controllers;
 [ApiController]
 [Authorize]
 [Route("/contact/")]
-[OpenApiRule()]
+[OpenApiRule]
 public class ContactController(IContactService contactService, ILogger<ContactController> logger) : ControllerBase
 {
     /// <summary>
@@ -22,6 +22,23 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
     /// <param name="id">id of contact to get</param>
     /// <returns>ContactDTO</returns>
     // Crud
+
+    [HttpGet("get/all")]
+    public IEnumerable<ContactDto> GetAllContacts()
+    {
+        List<Contact> contacts = contactService.GetAllContacts().ToList();
+        return contacts
+            .Select(c => 
+                new ContactDto
+                    (
+                        c.PhoneNumber, 
+                        c.Name, 
+                        c.Description, 
+                        c.Friends.Select(c => c.Contact.Id)
+                    )
+            );
+    }
+    
     [HttpGet("get/{id}")]
     public IActionResult GetContact(int id)
     {
@@ -36,12 +53,12 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
             return BadRequest(e.Message);
         }
 
-        ContactDTO result = new ContactDTO
+        ContactDto result = new ContactDto
         (
             contact.PhoneNumber, 
             contact.Name, 
             contact.Description,
-            contact.SubContacts.Select(c => c.Id)
+            contact.Friends.Select(c => c.Friend.Id)
         );
         return Ok(result);
     }
@@ -106,17 +123,17 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
     /// <summary>
     /// Request should be from frontend client
     /// </summary>
-    /// <param name="contactId">Contact which will be added to user</param>
+    /// <param name="subContactId">Contact which will be added to user</param>
     /// <returns></returns>
-    [HttpPost("contacts/add")]
-    public IActionResult AddContact(int contactId)
+    [HttpPost("self/contacts/add")]
+    public IActionResult AddSubContact(int subContactId)
     {
         string userPhoneNumber = HttpContext.User.Claims.First(claim => claim.Type == "phone").Value;
         Contact user = contactService.GetContactUser(userPhoneNumber);
         Contact contact;
         try
         {
-            contact = contactService.GetContactUser(contactId);
+            contact = contactService.GetContactUser(subContactId);
         }
         catch (ApplicationException e)
         {
@@ -127,4 +144,24 @@ public class ContactController(IContactService contactService, ILogger<ContactCo
         contactService.AddSubContact(user, contact);
         return Ok();
     }
+    [HttpGet("self/contacts/remove")]
+    public IActionResult RemoveSubContact(int subContactId)
+    {
+        string userPhoneNumber = HttpContext.User.Claims.First(claim => claim.Type == "phone").Value;
+        Contact user = contactService.GetContactUser(userPhoneNumber);
+
+        Contact contact;
+        try
+        {
+            contact = contactService.GetContactUser(subContactId);
+        }
+        catch (ApplicationException e)
+        {
+            logger.LogWarning(e.Message);
+            return BadRequest(e.Message);
+        }
+        contactService.RemoveSubContact(user, contact);
+        return Ok();
+    }
+    
 }
